@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
+using Shared.ErrorModels;
 using SwimmingAcademy.Filters;
 
 namespace SwimmingAcademy.Extensions
@@ -43,8 +44,33 @@ namespace SwimmingAcademy.Extensions
                 });
 
                 swagger.OperationFilter<SecurityRequirementsOperationFilter>();
+
             });
 
+
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = context =>
+                {
+                    var errors = context.ModelState
+                        .Where(x => x.Value?.Errors.Any() == true)
+                        .ToDictionary(
+                            x => x.Key,
+                            x => x.Value!.Errors.Select(e => e.ErrorMessage).ToArray()
+                        );
+
+                    var problem = new ApiProblemDetails
+                    {
+                        Status = StatusCodes.Status400BadRequest,
+                        Type = "validation_error",
+                        Title = "Validation failed",
+                        Errors = errors,
+                        TraceId = context.HttpContext.TraceIdentifier
+                    };
+
+                    return new BadRequestObjectResult(problem);
+                };
+            });
 
             return services;
         }
