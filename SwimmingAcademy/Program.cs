@@ -1,3 +1,4 @@
+using SwimmingAcademy.Extensions;
 
 namespace SwimmingAcademy
 {
@@ -8,29 +9,34 @@ namespace SwimmingAcademy
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            #region DI Container
+            //WebApi Services
+            builder.Services.AddWebApiServices(builder.Configuration);
 
-            builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-            builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            //Infrastructure Services
+            builder.Services.AddInfrastructureServices(builder.Configuration);
+
+            #endregion
 
             var app = builder.Build();
 
+            #region Middlewares
+
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            //if (app.Environment.IsDevelopment())
+            //{
+            app.UseSwaggerMiddleware();
+            //}
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseCors("FrontPolicy");
+            app.UseAuthentication();
             app.UseAuthorization();
-
-
             app.MapControllers();
-
             app.Run();
+            #endregion
         }
     }
 }
