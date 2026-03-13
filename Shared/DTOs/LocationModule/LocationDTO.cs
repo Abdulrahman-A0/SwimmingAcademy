@@ -1,27 +1,35 @@
-﻿
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace Shared.DTOs.LocationModule
 {
     /// <summary>
-    /// DTO used to add location.
+    /// DTO used to return location data.
     /// </summary>
-    public class AddLocationDTO
+    public class LocationDTO
     {
         /// <summary>
-        /// Name of the academy location
+        /// Location name.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
-        /// Street address of the location
+        /// Address of the location.
         /// </summary>
         public string Address { get; set; }
+
         /// <summary>
-        /// City where the location is located
+        /// City where the location exists.
         /// </summary>
         public string City { get; set; }
+
         /// <summary>
-        /// whether the location is active or not
+        /// Indicates if the location is active.
         /// </summary>
         public bool IsActive { get; set; }
-
     }
 }
+

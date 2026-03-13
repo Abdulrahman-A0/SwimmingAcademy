@@ -1,27 +1,31 @@
 ﻿
+
 namespace Shared.DTOs.LocationModule
 {
     /// <summary>
-    /// DTO used to add location.
+    /// DTO used to update an existing location.
     /// </summary>
-    public class AddLocationDTO
+    public class UpdateLocationDTO
     {
         /// <summary>
-        /// Name of the academy location
+        /// Name of the location branch.
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
-        /// Street address of the location
+        /// Address of the location.
         /// </summary>
         public string Address { get; set; }
+
         /// <summary>
-        /// City where the location is located
+        /// City where the location exists.
         /// </summary>
         public string City { get; set; }
+
         /// <summary>
-        /// whether the location is active or not
+        /// Determines whether the location is active.
         /// </summary>
         public bool IsActive { get; set; }
-
     }
 }
+

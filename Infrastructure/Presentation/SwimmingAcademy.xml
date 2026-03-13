@@ -26,5 +26,29 @@
             <response code="200">Location created successfully</response>
             <response code="400">Validation error</response>
         </member>
+        <member name="M:Presentation.Controller.LocationController.GetAllLocations">
+            <summary>
+            Retrieves all locations.
+            </summary>
+            <remarks>
+            Returns all swimming academy locations.
+            </remarks>
+        </member>
+        <member name="M:Presentation.Controller.LocationController.UpdateLocation(System.Int32,Shared.DTOs.LocationModule.UpdateLocationDTO)">
+            <summary>
+            Updates an existing location.
+            </summary>
+            <remarks>
+            Allows administrators to modify location details.
+            </remarks>
+        </member>
+        <member name="M:Presentation.Controller.LocationController.DeleteLocation(System.Int32)">
+            <summary>
+            Deletes a location.
+            </summary>
+            <remarks>
+            Performs a soft delete by setting IsActive = false.
+            </remarks>
+        </member>
     </members>
 </doc>

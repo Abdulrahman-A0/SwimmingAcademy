@@ -4,6 +4,11 @@
         <name>Shared</name>
     </assembly>
     <members>
+        <member name="T:Shared.DTOs.LocationModule.AddLocationDTO">
+            <summary>
+            DTO used to add location.
+            </summary>
+        </member>
         <member name="P:Shared.DTOs.LocationModule.AddLocationDTO.Name">
             <summary>
             Name of the academy location
@@ -22,6 +27,56 @@
         <member name="P:Shared.DTOs.LocationModule.AddLocationDTO.IsActive">
             <summary>
             whether the location is active or not
+            </summary>
+        </member>
+        <member name="T:Shared.DTOs.LocationModule.LocationDTO">
+            <summary>
+            DTO used to return location data.
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.LocationDTO.Name">
+            <summary>
+            Location name.
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.LocationDTO.Address">
+            <summary>
+            Address of the location.
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.LocationDTO.City">
+            <summary>
+            City where the location exists.
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.LocationDTO.IsActive">
+            <summary>
+            Indicates if the location is active.
+            </summary>
+        </member>
+        <member name="T:Shared.DTOs.LocationModule.UpdateLocationDTO">
+            <summary>
+            DTO used to update an existing location.
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.UpdateLocationDTO.Name">
+            <summary>
+            Name of the location branch.
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.UpdateLocationDTO.Address">
+            <summary>
+            Address of the location.
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.UpdateLocationDTO.City">
+            <summary>
+            City where the location exists.
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.UpdateLocationDTO.IsActive">
+            <summary>
+            Determines whether the location is active.
             </summary>
         </member>
     </members>

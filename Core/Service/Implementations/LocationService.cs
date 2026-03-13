@@ -56,5 +56,76 @@ namespace Service.Implementations
             };
 
         }
+
+        public async Task<IEnumerable<LocationDTO>> GetAllLocationsAsync()
+        {
+            var locations = await locationRepo.GetAllAsync();
+
+            return _mapper.Map<IEnumerable<LocationDTO>>(locations);
+        }
+
+
+        public async Task<AddEntityResultDTO> UpdateLocationAsync(int id, UpdateLocationDTO dto)
+        {
+            var location = await locationRepo.GetByIdAsync(id);
+
+            if (location is null)
+                throw new LocationValidationException(
+                    new Dictionary<string, string[]>
+                    {
+                        ["Location"] = new[] { "Location not found." }
+                    });
+
+            location.Name = dto.Name.Trim();
+            location.Address = dto.Address.Trim();
+            location.City = dto.City.Trim();
+            location.IsActive = dto.IsActive;
+
+            if (string.IsNullOrWhiteSpace(location.Name) ||
+                string.IsNullOrWhiteSpace(location.Address) ||
+                string.IsNullOrWhiteSpace(location.City))
+            {
+                throw new LocationValidationException(
+                   new Dictionary<string, string[]>
+                   {
+                       ["LocationContent"] = new[] { "Location attributes must contain text." }
+                   });
+            }
+
+            locationRepo.Update(location);
+
+            await _unitOfWork.SaveChangesAsync();
+
+            return new AddEntityResultDTO
+            {
+                IsCreated = true,
+                Message = "Updated Successfully!"
+            };
+        }
+
+        public async Task<AddEntityResultDTO> DeleteLocationAsync(int id)
+        {
+            var location = await locationRepo.GetByIdAsync(id);
+
+            if (location is null)
+                throw new LocationValidationException(
+                    new Dictionary<string, string[]>
+                    {
+                        ["Location"] = new[] { "Location not found." }
+                    });
+
+            location.IsActive = false;
+
+            locationRepo.Update(location);
+
+            await _unitOfWork.SaveChangesAsync();
+
+            return new AddEntityResultDTO
+            {
+                IsCreated = true,
+                Message = "Deleted Successfully!"
+            };
+        }
+
     }
 }
