@@ -16,7 +16,6 @@ namespace Persistence.Data.Contexts
     {
         #region DbSets
         public DbSet<ApplicationUser> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Pool> Pools { get; set; }
         public DbSet<PoolWorkingHour> PoolWorkingHours { get; set; }
