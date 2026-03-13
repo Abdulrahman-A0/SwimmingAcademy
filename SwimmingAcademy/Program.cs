@@ -16,6 +16,8 @@ namespace SwimmingAcademy
             //Infrastructure Services
             builder.Services.AddInfrastructureServices(builder.Configuration);
 
+            //Core Services
+            builder.Services.AddCoreServices(builder.Configuration);
             #endregion
 
             var app = builder.Build();

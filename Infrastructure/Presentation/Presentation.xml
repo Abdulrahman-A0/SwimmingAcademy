@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Presentation</name>
+    </assembly>
+    <members>
+        <member name="M:Presentation.Controller.LocationController.AddLocation(Shared.DTOs.LocationModule.AddLocationDTO)">
+            <summary>
+            Creates a new Location in the system.
+            </summary>
+            <remarks>
+            This endpoint allows administrators to create a new academy location.
+            
+            Validation Rules:
+            - Name cannot be empty
+            - Address cannot be empty
+            - City cannot be empty
+            
+            Example Request:
+            {
+              "name": "Downtown Branch",
+              "address": "123 Nile Street",
+              "city": "Cairo"
+            }
+            </remarks>
+            <response code="200">Location created successfully</response>
+            <response code="400">Validation error</response>
+        </member>
+    </members>
+</doc>

@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using Shared.ErrorModels;
 using SwimmingAcademy.Filters;
+using System.Reflection;
 
 namespace SwimmingAcademy.Extensions
 {
@@ -42,6 +44,13 @@ namespace SwimmingAcademy.Extensions
                     In = ParameterLocation.Header,
                     Description = "Enter 'Bearer' [space] and then your valid token in the text input below.\r\n\r\nExample: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\"",
                 });
+
+                var basePath = AppContext.BaseDirectory;
+
+                foreach (var xmlFile in Directory.GetFiles(basePath, "*.xml"))
+                {
+                    swagger.IncludeXmlComments(xmlFile, true);
+                }
 
                 swagger.OperationFilter<SecurityRequirementsOperationFilter>();
 
