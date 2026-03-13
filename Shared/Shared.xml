@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shared</name>
+    </assembly>
+    <members>
+        <member name="P:Shared.DTOs.LocationModule.AddLocationDTO.Name">
+            <summary>
+            Name of the academy location
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.AddLocationDTO.Address">
+            <summary>
+            Street address of the location
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.AddLocationDTO.City">
+            <summary>
+            City where the location is located
+            </summary>
+        </member>
+        <member name="P:Shared.DTOs.LocationModule.AddLocationDTO.IsActive">
+            <summary>
+            whether the location is active or not
+            </summary>
+        </member>
+    </members>
+</doc>
